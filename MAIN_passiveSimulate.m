@@ -34,7 +34,8 @@ dq2 = 0;
 z0 = [q1;q2;dq1;dq2];  %Pack up initial state
 
 tSpan = [0,8];  %time span for the simulation
-dynFun = @(t,z)( acrobotDynamics(z,0,p) );  %passive dynamics function
+u = 0;   % Motor torque (set to zero for passive dynamics)
+dynFun = @(t,z)( acrobotDynamics(z,u,p) );  %passive dynamics function
 
 % Run simulation:
 sol = ode45(dynFun,tSpan,z0);
